@@ -23,10 +23,10 @@ for what to place in your own.
 ```
 helm repo add nemonik https://nemonik.github.io/helm-charts/
 helm repo update
-helm search repo taiga
+helm search repo plantuml-server
 wget https://raw.githubusercontent.com/nemonik/plantuml-server-helm/master/example-values.yaml
-helm install taiga nemonik/plantuml-server --namespace plantuml-server --create-namespace -f example-values.yaml
-watch -n 15 kubectl get pods -n taiga
+helm install plantuml-server nemonik/plantuml-server --namespace plantuml-server --create-namespace -f example-values.yaml
+watch -n 15 kubectl get pods -n plantuml-server
 ```
 
 ## Accessing PlantUML-Server
@@ -44,16 +44,15 @@ Or configure an ingress via your values file by adding an `ingress` configuratio
 in your values file likes so:
 
 ```
-taigaGateway:
-  ingress:
-    enabled: true
-    annotations:
-      traefik.ingress.kubernetes.io/router.entrypoints: web
-    hosts:
-      - host: plantuml.example.com
-        paths:
-          -  "/"
-    tls: []
+ingress:
+  enabled: true
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+  hosts:
+    - host: plantuml.example.com
+      paths:
+        -  "/"
+  tls: []
 ``` 
 
 This example uses Traefik to expose the ingress.  Configuring Traefik is out of scope of this 
