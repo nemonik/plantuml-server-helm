@@ -5,15 +5,3 @@ image:
 service:
   type: ClusterIP
   port: 80
-
-ingress:
-  enabled: true
-  annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/router.tls: 'true'
-  hosts:
-    - host: plantuml.nemonik.com
-      paths:
-        -  "/"
-  tls: []
-
