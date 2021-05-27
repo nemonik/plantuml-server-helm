@@ -58,7 +58,7 @@ ingress:
 This example uses Traefik to expose the ingress.  Configuring Traefik is out of scope of this 
 readme.  
 
-In my forthcoming updated Hands-n DevOps class I do this exposing PlantUML-Server over https, so when that
+In my forthcoming updated Hands-on DevOps class I do this exposing PlantUML-Server over https, so when that
 drops you can find some insight how to do so there.
 
 ## License
