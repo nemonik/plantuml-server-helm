@@ -1,4 +1,5 @@
 {{- if and .Values.ingress.enabled -}}
+{{- $serviceName := .Values.service.name -}}
 {{- $kubeVersion := .Capabilities.KubeVersion.GitVersion   -}}
 {{- if semverCompare ">=1.14-0" $kubeVersion -}}
 {{- $fullName := include "plantuml.fullname" . -}}
@@ -39,11 +40,11 @@ spec:
               {{- if semverCompare ">=1.19-0" $kubeVersion }}
               service:
                 name: {{ $fullName }}
-                port: {{ .Values.service.name }}
+                port: {{ $serviceName }}
               {{- else if semverCompare ">=1.14-0" $kubeVersion }}
               backend:
                 serviceName: {{ $fullName }}
-                servicePort: {{ .Values.service.name }}
+                servicePort: {{ $erviceName }}
               {{- end }}
         {{- end }}
   {{- end }}
